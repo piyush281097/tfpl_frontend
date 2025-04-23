@@ -6,8 +6,8 @@ const mockData = [
       sector: "Retail",
       category: "Juice",
       userID:'1',
-      startDate: "2024-04-01",
-      endDate: "2024-04-30",
+      startDate: "2024-03-01",
+      endDate: "2024-03-30",
       mySpend: {
         current: 120000,
         reference: 100000,

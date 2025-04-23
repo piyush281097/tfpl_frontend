@@ -1,23 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import { Box, Button } from '@mui/material';
-
-import useFilterData from '../../hooks/useFilterData';
 import MembersModal from '../MembersModal';
 import Filters from '../Filters';
 import DataTable from '../DataTable';
 import BarChart from '../BarChart';
 
-const MetricsView: React.FC = () => {
-  const [user, setUser] = useState(null);
+const MetricsView = ({ setUser, filters, setFilters, filteredData }: any) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const {
-    filters,
-    setFilters,
-    filteredData
-  } = useFilterData(user);
 
   return (
     <Box>
+      {/* Modal trigger */}
       <Box display="flex" justifyContent="flex-end" mb={2}>
         <Button variant="contained" onClick={() => setModalOpen(true)}>
           My Members
@@ -36,6 +30,5 @@ const MetricsView: React.FC = () => {
       <BarChart data={filteredData} metricKeys={filters.metricSelector} />
     </Box>
   );
-};
-
+}; 
 export default MetricsView;

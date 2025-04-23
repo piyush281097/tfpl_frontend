@@ -1,18 +1,28 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { ResponsiveLine } from '@nivo/line';
 
+import { parseISO, format } from 'date-fns';
+import useFilterData from '../../hooks/useFilterData';
 
 
-const AnalyticsView: React.FC = () => {
+const AnalyticsView: React.FC = (user: any) => {
+  const { filteredData } = useFilterData(user);
+
+  // Group data by month and sum spend
+  const spendByMonth: Record<string, number> = {};
+  filteredData.forEach((entry:any) => {
+    const date = parseISO(entry.startDate);
+    const month = format(date, 'MMM');
+    const spend = entry?.mySpend?.current || 0;
+    spendByMonth[month] = (spendByMonth[month] || 0) + spend;
+  });
+
   const data = [
     {
       id: 'My Spend',
-      data: [
-        { x: 'Jan', y: 100 },
-        { x: 'Feb', y: 120 },
-        { x: 'Mar', y: 90 },
-      ],
+      data: Object.entries(spendByMonth).map(([month, value]) => ({ x: month, y: value })),
     },
   ];
 
