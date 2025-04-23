@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from 'react';
-import { Box, FormControl, InputLabel, Select, MenuItem, Checkbox, ListItemText, OutlinedInput, Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { Box, FormControl, InputLabel, Select, MenuItem, Checkbox, ListItemText, OutlinedInput } from '@mui/material';
 import mockData from '../data/mockData';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 
-const attributes = ['Country', 'State', 'City', 'Sector', 'Category'];
 const metrics = ['My Spend', 'Same Store Spend', 'New Store Spend', 'Lost Store Spend'];
 const sectors = ['Retail', 'Food', 'Industrial'];
 const categories = ['Juice', 'Snacks', 'Frozen Foods', 'Beverages'];

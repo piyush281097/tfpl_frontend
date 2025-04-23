@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { ResponsiveLine } from '@nivo/line';
 
@@ -7,7 +6,7 @@ import { parseISO, format } from 'date-fns';
 import useFilterData from '../../hooks/useFilterData';
 
 
-const AnalyticsView: React.FC = (user: any) => {
+const AnalyticsView = ({user}: any) => {
   const { filteredData } = useFilterData(user);
 
   // Group data by month and sum spend

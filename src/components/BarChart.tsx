@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 import { Box, Typography } from '@mui/material';
 
-const BarChart = ({ data, metricKeys }: any) => {
+const BarChart = ({ data }: any) => {
   const chartDataMap = new Map<string, Record<string, any>>();
   const metricSet = new Set<string>();
 
@@ -15,6 +14,7 @@ const BarChart = ({ data, metricKeys }: any) => {
     }
 
     const categoryGroup = chartDataMap.get(category);
+    if (!categoryGroup) return; // Skip if undefined
 
     Object.entries(entry).forEach(([key, value]) => {
       // Only include keys that have a `.current` and are not common fields like 'category'
